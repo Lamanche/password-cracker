@@ -27,10 +27,12 @@ import { hashedPasswords } from "./hashedPasswords.js";
           } else if (
             i === saltSet.length - 1 &&
             j === saltSet.length - 1 &&
-            k === hashedPasswords.lenght - 1 &&
+            k === hashedPasswords.length - 1 &&
             l === passwords.length - 1 &&
             hashedPassword !== hashedPasswords[k]
           ) {
+            const endTime = new Date().getTime();
+            const time = (endTime - startTime) / 1000;
             return console.log(`No password found in ${time} seconds`);
           }
         }
