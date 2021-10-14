@@ -24,7 +24,7 @@ import { hashedPasswords } from "./hashedPasswords.js";
             return console.log(
               `Password cracked - ${passwords[l]}, tried ${count} times in ${time} seconds`
             );
-          } else if (
+          } /*else if (
             i === saltSet.length - 1 &&
             j === saltSet.length - 1 &&
             k === hashedPasswords.length - 1 &&
@@ -34,10 +34,11 @@ import { hashedPasswords } from "./hashedPasswords.js";
             const endTime = new Date().getTime();
             const time = (endTime - startTime) / 1000;
             return console.log(`No password found in ${time} seconds`);
-          }
+          }*/
         }
       }
       possibleSalt.pop();
     }
   }
+  return console.log(`No password found in ${time} seconds`);
 })();
