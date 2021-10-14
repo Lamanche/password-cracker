@@ -6,15 +6,22 @@ import { hashedPasswords } from "./hashedPasswords.js";
   const startTime = new Date().getTime();
   let count = 0;
 
-  console.log("starting");
+  console.log("cracking...");
 
-  for (let i = 0; i < saltSet.length; i++) {
+  const a = saltSet.length;
+  for (let i = 0; i < a; i++) {
     let possibleSalt = [];
     possibleSalt.push(saltSet[i]);
-    for (let j = 0; j < saltSet.length; j++) {
+
+    const b = saltSet.length;
+    for (let j = 0; j < b; j++) {
       possibleSalt.push(saltSet[j]);
-      for (let k = 0; k < hashedPasswords.length; k++) {
-        for (let l = 0; l < passwords.length; l++) {
+
+      const c = hashedPasswords.length;
+      for (let k = 0; k < c; k++) {
+        
+        const d = passwords.length;
+        for (let l = 0; l < d; l++) {
           const saltedPassword = possibleSalt.join("") + passwords[l];
           const hashedPassword = CryptoJS.MD5(saltedPassword).toString();
           count++;
@@ -24,21 +31,13 @@ import { hashedPasswords } from "./hashedPasswords.js";
             return console.log(
               `Password cracked - ${passwords[l]}, tried ${count} times in ${time} seconds`
             );
-          } /*else if (
-            i === saltSet.length - 1 &&
-            j === saltSet.length - 1 &&
-            k === hashedPasswords.length - 1 &&
-            l === passwords.length - 1 &&
-            hashedPassword !== hashedPasswords[k]
-          ) {
-            const endTime = new Date().getTime();
-            const time = (endTime - startTime) / 1000;
-            return console.log(`No password found in ${time} seconds`);
-          }*/
+          }
         }
       }
       possibleSalt.pop();
     }
   }
+  const endTime = new Date().getTime();
+  const time = (endTime - startTime) / 1000;
   return console.log(`No password found in ${time} seconds`);
 })();
