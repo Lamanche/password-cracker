@@ -24,7 +24,7 @@ import { hashedPasswords } from "./hashedPasswords.js";
         const d = passwords.length;
         for (let l = 0; l < d; l++) {
           //const saltedPassword = possibleSalt.join("") + passwords[l];
-          cons saltedPassword = saltSet[i]+saltSet[j]+password[l]
+          const saltedPassword = saltSet[i]+saltSet[j]+password[l]
           const hashedPassword = CryptoJS.MD5(saltedPassword).toString();
           count++;
           if (hashedPassword === hashedPasswords[k]) {
